@@ -102,7 +102,7 @@ def new(request):
 def random_entry(request):
     list = util.list_entries()
     random_element = random.choice(list)
-    return wiki(request, random_element)
+    return HttpResponseRedirect(reverse("wiki_entry", kwargs={"entry": random_element}))
 
 def edit(request, entry):
 
