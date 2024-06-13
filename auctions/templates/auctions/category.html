@@ -1,12 +1,12 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>Active Listings</h2>
+    <h2>Category: {{category.name}}</h2>
+    <p>There are {{count}} active listing(s) in this category</p>
 
     {% for listing in listings %}
         <div class="listing">
             <hr>
-            <h5>{{listing.category}}</h5>
             <h3><a href="{% url 'listings' listing.id %}">{{listing.title}}</a></h3>
             <p>{{listing.description}}</p>
             <p class="price">Current Price: {{listing.current_price}}$</p>

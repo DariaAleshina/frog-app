@@ -1,0 +1,114 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Listing: {{listing.title}}</h2>
+
+        <div class="listing_details">
+            <div id="category_status_header">
+                <h5>{{listing.category}}</h5>
+           
+                {% if listing.active == True %}
+                <div class="status_active">
+                    <p>Status: active</p>
+                </div>
+                {% else %}
+                <div class="status_inactive">
+                    <p>Status: inactive</p>
+                </div>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                <div class="watchlist">
+                    <form action="{% url 'listings' listing.id %}" method="post">
+                        {% csrf_token %}
+                        <input hidden name="user_id" value="{{user.id}}">
+                        <button name="watchlist_button" id="watchlist_button">{{watchlist_button_message}}</button>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+            
+
+            <div id="listing_info_block">
+                <div id="listing_info_block_img">
+                    <img src="{{listing.pic}}" alt="{{listing.description}}">
+                </div>
+
+                <div id="listing_info_block_descr">
+                    <p>{{listing.description}}</p>
+                    <p>Listed by: {{listing.user_created.username}}</p>
+                    <hr>    
+                    <p class="price">Current Price: {{listing.current_price}}$ </p>
+                    <p>Intitial Price: {{listing.start_price}}$</p>
+                    {{bid_count}} bid(s) made so far    
+                    
+                    {% if user.is_authenticated %}
+                        {% if listing.user_created.id == user.id %}
+                        <div class="watchlist">
+                            <form action="{% url 'listings' listing.id %}" method="post">
+                                {% csrf_token %}
+                                <button name="listing_close" id="listing_close">
+                                    {% if listing.active == True %}
+                                    Close
+                                    {% else %}
+                                    Re-open
+                                    {% endif %}
+                                </button>
+                            </form>
+                        </div>
+                            {% if listing.active == False %}
+                            <p>The winner is {{winning_bid.user_made.username}}</p> 
+                            {% endif %}           
+                        {% endif %}
+
+                        {% if not listing.user_created.id == user.id %}
+                            {% if listing.active == True %}
+                            <div id="add_bid_form">
+                                <p>Submit your bid:</p>
+                                <p>{{ bid_error_message }}</p>
+                                <form action="{% url 'listings' listing.id %}" method="post" >
+                                    {% csrf_token %}
+                                    {{ bid_form.bid }}
+                                    <input hidden name="user_made_id" value="{{user.id}}">
+                                    <button name="submit_bid_button">Submit</button>
+                                </form>
+                            </div>
+                            {% elif winning_bid.user_made.id == user.id  %}
+                            <p><strong>You are the winner!</strong></p>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+
+                   
+                    
+                </div>
+            </div>
+        </div>
+            
+    <hr>
+    <h5>Comments</h5>
+
+        {% if user.is_authenticated %}
+            Add your comment:
+                <div>
+                    <form action="{% url 'listings' listing.id %}" method="post" id="add_comment_form">    
+                        {% csrf_token %}  
+                        {{ comment_form.comment }}         
+                        <input hidden name="user_made_id" value="{{user.id}}">
+                        <button name="submit_comment_button">Submit</button>
+                    </form>
+                </div>
+                <hr>
+            {% endif %}
+
+            {% for comment in comments %}
+            <div class="comment_div">
+            <q class="comment">{{comment.comment}}</q>
+            <p class="commented_by">by {{comment.user_made.username}}</p>
+            </div>
+            {% empty %}
+            <p>No comments</p>
+            {% endfor %}
+
+
+{% endblock %}
