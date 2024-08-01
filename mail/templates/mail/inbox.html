@@ -1,6 +1,10 @@
 {% extends "mail/layout.html" %}
 {% load static %}
 
+{% block script %}
+    <script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}
+
 {% block body %}
     <h2>{{ request.user.email }}</h2>
 
@@ -12,11 +16,13 @@
     <hr>
 
     <div id="emails-view">
+        <div id="emails-view-header"></div>
+        <div id="emails-view-body"></div>
     </div>
 
     <div id="compose-view">
         <h3>New Email</h3>
-        <form id="compose-form">
+        <form id="compose-form" method="POST" action="{% url 'compose' %}">
             <div class="form-group">
                 From: <input disabled class="form-control" value="{{ request.user.email }}">
             </div>
@@ -30,8 +36,29 @@
             <input type="submit" class="btn btn-primary"/>
         </form>
     </div>
+
+    <div id="full-email-view">
+        <div>
+            <strong>From:</strong> 
+            <h7 id="email-sender"></h7>
+        </div>
+        <div>
+            <strong>To:</strong> 
+            <h7 id="email-recipients"></h7>
+        </div>
+        <div>
+            <strong>Subject:</strong> 
+            <h7 id="email-subject"></h7>
+        </div>
+        <div>
+            <strong>Timestamp:</strong> 
+            <h7 id="email-timestamp"></h7>
+        </div>
+        <hr>
+        <span id="email-body"></span>
+        <hr>
+        <button class="email-reply btn btn-sm btn-outline-primary">Reply</button>
+        <button class="email-archive btn btn-sm btn-outline-primary"></button>
+    </div>
 {% endblock %}
 
-{% block script %}
-    <script src="{% static 'mail/inbox.js' %}"></script>
-{% endblock %}
