@@ -1,5 +1,41 @@
 {% extends "network/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script type="module" src="{% static 'network/index.js' %}"></script>
+{% endblock %}
 
 {% block body %}
-    TODO
-{% endblock %}
+
+
+{% if user.is_authenticated %}
+<!-- passing id of the authenticated user (for JS) -->
+<div hidden id="user_authenticated">{{ user.id }}</div>
+<!-- passing value of CSRF tocken (for JS)-->
+<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"></input>
+
+<!-- loading New Post form  -->
+<div id="block_1_create">
+    <div id="form_block">
+        <h4>Share your thoughts</h4>
+        <form id="new_post_form" method="post" action="{% url 'create_new_post' %}">
+            {% csrf_token %}
+            {{NewPost_form.PostText}}
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <button>Add</button>
+        </form>
+    </div>
+    <hr>
+</div>
+
+{% endif %}
+
+<!-- loading All Posts (for all users, incl not authenticated) -->
+<div id="block_2_posts">
+    <h4 id="posts_block_header"></h4>
+    <div id="posts_block"></div>
+    <div id="posts_pagination_nav"></div>
+</div>
+
+
+{% endblock %}  

@@ -1,0 +1,124 @@
+.body {
+    padding: 2%;
+}
+
+
+/* BLOCKS VIEW */
+
+#form_block, .single_post_block {
+    width: 100%; 
+    border-radius: 4px;
+    outline-style: solid;
+    outline-color: lightgrey;
+    padding: 2%;
+    margin: 10px 0;
+}
+
+/* NEW POST FORM */
+
+#form_block {
+    background-color: #d4fb8c;
+}
+
+#new_post_form textarea, button {
+    display: block;
+}
+
+#new_post_form textarea {
+    width: 100%;
+}
+
+button {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    border-color: none;
+    font-size: smaller;
+    color: white;
+    background-color: #a34ff3; /* main purple */
+    padding: 5px 10px 5px 10px;
+}
+
+button:hover {
+    background-color: #b26cf8;
+}
+
+/* POST VIEW */
+
+.creator, .likes, .timestamp, .edit_link {
+    font-size: smaller;
+    margin-right: 20px;
+}
+
+.post_text {
+    margin: 5px 0 5px 0;
+}
+
+a {
+    color: #a34ff3;  
+}
+
+a:hover {
+    color: #a34ff3;  
+}
+
+.likes, .timestamp {
+    color: grey;
+}
+
+.other, .likes {
+    display: flex;
+}
+
+.heart {
+    margin-right: 3px;
+}
+
+/* EDIT POST VIEW */
+.edit_post_input {
+    width: 100%;
+    border-color: lightgrey;
+    border-radius: 4px;
+}
+
+.edit_post_input:focus {
+    outline-color: #a34ff3;
+    outline-width: 1px;
+}
+
+/* USER PROFILE PAGE */
+
+#profile_block_1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#profile_block_1 div, #follow_form {
+    margin-right: 40px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+#profile_block_1 div h4, p {
+    margin-bottom: 0px;
+}
+
+#user_profile_header {
+    border-radius: 40px;
+    background-color: #a34ff3;
+    color: #d4fb8c;
+    padding: 20px 40px;
+}
+
+/* PAGINATION */
+
+.posts_pagination_nav_block {
+    margin-right: 10px;
+}
