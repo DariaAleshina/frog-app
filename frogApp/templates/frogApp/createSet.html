@@ -1,0 +1,23 @@
+{% extends "frogApp/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script type="module" src="{% static 'frogApp/createSet.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+    New FroSet
+{% endblock %}
+
+{% block main %}
+    {% if user.is_authenticated %}
+        {% csrf_token %}
+
+        <div hidden id="user_id_authenticated">{{ user.id }}</div>
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"></input>
+
+        <div id="newSet" class="main-sub-block"></div>
+        <div id="newCard" class="main-sub-block"></div>
+        <div id="cardsView" class="main-sub-block"></div>
+    {% endif %}
+{% endblock %}  

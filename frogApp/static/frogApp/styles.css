@@ -1,0 +1,674 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #292929;
+}
+
+main {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%; 
+    color:#8ED9C1;
+    padding: 10px 5px 10px 5px;
+    flex: 1;
+}
+
+
+.main-sub-block {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+title, h3 {
+    color: #04281C; /* DarkGreen */
+}
+
+h2, a {
+    color: #8ED9C1; /* Light Green */
+    text-align: center;
+}
+
+.heading-dark {
+    color: #04281C; /* DarkGreen */
+}
+
+p {
+    margin: 0px;
+    text-align: center;
+}
+
+.greenlink {
+    color: #04281C;
+    text-decoration: none;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.6;
+}
+
+.separation_block {
+    padding: 40px;
+}
+
+.greytext {
+    color: grey;
+}
+
+/*navigation bar - old*/
+
+.logo_link {
+    color: black;
+    text-decoration: none;
+    font-size: x-large;
+}
+
+.nav-link {
+    color: #245323;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.nav-text {
+    padding: 10px;
+    margin: 0px;
+}
+
+.my_nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #eeeeee;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.nav_block {
+    align-self: center;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+
+/*footer - old*/
+.my_footer {
+    background-color: #eeeeee;
+    padding: 20px;
+    color: grey;
+    font-size: smaller;
+    text-align: right;
+    height: 70px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    z-index: 1;   
+}
+
+#frog-footer {
+    position: relative;
+    width: 150px;      
+    height: 150px;   
+    margin-top: -10px; 
+    z-index: 2;      
+    left: 7%;
+    transform: translateX(-50%);
+}
+
+.frog-footer {
+    background-color: inherit;
+    height: 95px;
+}
+
+/*ADD WORDS*/
+
+.add_new_words_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+}
+
+
+#add_new_words {
+    background-color: #8ED9C1;
+    padding: 4vw;
+    border-radius: 25px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 98%;
+    max-width: 600px;
+}
+
+#newSet, #newCard, .newCard {
+    background-color: #8ED9C1;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 98%;
+    max-width: 600px;
+    margin: 10px 0 0 10px;
+}
+
+.add_words_form {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.add_set_form {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#pic-frog-on-paper {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+
+.form_block {
+    padding: 10px;
+    display: flex;
+    flex-flow: column;
+    width: 98%;
+}
+
+.form_header, .form_block label  {
+    margin-bottom: 0;
+    color: #04281C;
+}
+
+textarea, .form_block input {
+    display: flex;
+    border-radius: 5px;
+}
+
+textarea:focus, .form_block input:focus {
+    outline-color: #04281C; /* DarkGreen */
+}
+
+.button_add {
+    background-color: #04281C; /* DarkGreen */
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+
+#number_of_words {
+    color: #04281C;  /* Dark Green */
+    background-color: #8ED9C1  /* Light Green */
+}
+
+.table_header {
+    background-color: #8ED9C1  /* Light Green */
+}
+
+/* CARDS VIEW - NEW */
+
+#cardsView {
+    display: flex;
+    flex-flow: column;
+    width: 90%;
+    margin-top: 20px;
+}
+
+#headerCardsView {
+    display: flex;
+    flex-flow: row;
+    align-content: flex-start;
+}
+
+#headerTextCardsView {
+    margin-left: 5px;
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+    }
+    
+    100% {
+        opacity: 0;
+    } 
+}
+
+.cardDiv {
+    border-style: solid;
+    border-color: #8ED9C1;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding: 5px 10px;
+    margin: 5px;
+
+    animation-name: hide;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+}
+
+
+.cardDivElement1, .cardDivElement2 {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    padding: 0px 5px;
+}
+
+.cardDivElement1 {
+    width: 22.5%;
+}
+
+.cardDivElement2 {
+    width: 7%;
+}
+
+.cardDivElement2 a {
+    border-radius: 4px;
+    padding: 7px 7px;
+    display: flex;
+    justify-content: center;
+}
+
+.cardDivElement2 a:hover {
+    background-color:rgb(74, 73, 73);
+}
+
+/* when edit form is added */
+
+.cardDiv form {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.cardDiv form textarea, button {
+    border: none;
+    background: none;
+    color:#8ED9C1;
+}
+
+.cardDiv form textarea {
+    resize: none;
+}
+
+.cardDiv form textarea:focus {
+    outline: none;
+}
+
+
+/* FLASH CARDS - old */
+
+.wordcards_block {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 100%;
+}
+
+.next-card-btn, .prev-card-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.card-list {
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+    scroll-behavior: auto;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.card-list::-webkit-scrollbar {
+    display: none; 
+}
+
+.flip-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    min-width: 600px;
+    perspective: 1000px; 
+    padding-left: 4%;
+    padding-right: 4%;
+    scroll-snap-align: center;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flashcard-side1, .flashcard-side2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+}
+
+.flashcard-side1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8ED9C1;  /* Light Green */
+    border-radius: 20px;
+}
+
+.card-word {
+    color: #04281C;  /* Dark Green */
+    font-weight: bold;
+    font-size: xx-large;
+    margin: 5px;
+}
+
+.flashcard-side2 {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background-color: lightgrey;
+    border-radius: 20px;
+    overflow: auto;
+    padding-top:10px;
+    padding-bottom:10px;
+    transform: rotateY(180deg);
+}
+
+.flashcard-side2-translation {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    border-radius: inherit;
+    height: fit-content;
+    width: 90%;
+    margin: 1%;
+}
+
+.card-translation {
+    text-align: left;
+    color: #04281C;  /* Dark Green */
+    font-weight: bold;
+    font-size: large;
+    line-height: 1.3;
+    margin-bottom: 0px;
+    margin-left: 12px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.flashcard-side2-infoblock {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #eeeeee;
+    border-radius: inherit;
+    height: fit-content;
+    width: 90%;
+    margin: 1%;
+}
+
+.card-example, .card-addinfo {
+    text-align: left;
+    color: grey;
+    font-weight: normal;
+    font-size: medium;
+    line-height: 1.3;
+    margin-bottom: 0px;
+    margin-left: 12px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+
+/* Caurousel - */
+.carousel-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.next-btn, .prev-btn {
+    background-color: white;
+    border-color: #04281C; /* DarkGreen */
+    color: #04281C; /* DarkGreen */
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 60px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/*INTRO MAIN - old*/
+
+.intro-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+}
+
+#intro_pic {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+/* LOG IN FORM */
+.login_form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 90%;
+    max-width: 300px;
+    height: fit-content;
+}
+
+
+.login_form_row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 2px;
+}
+
+.login_form_input {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    height: fit-content;
+    width: 100%;
+    margin: 1%;
+    padding: 10px;
+}
+
+.login_form_input:focus {
+    outline-color:  #8ED9C1;  /* Light Green */
+}
+
+
+.login-button {
+    background-color: #8ED9C1;  /* Light Green */
+    border: none;
+    border-radius: 20px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    padding: 10px 20px 10px 20px;
+  }
+
+.lighttext {
+    color: white;
+    margin: 1%;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.lightlink {
+    color: #8ED9C1;  /* Light Green */
+    text-decoration: none;
+}
+
+
+/* studyroom */
+
+.button_filter_active, .button_filter_inactive {
+    width: 150px;
+
+    border-radius: 50px;
+    font-size: 16px;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+    padding: 5px 10px;
+    margin: 5px 20px;
+  }
+
+.button_filter_active {
+    background-color: #8ED9C1; 
+    color: #04281C; 
+    border: none;
+}
+
+.button_filter_inactive {
+    background-color: #292929; 
+    color: #8ED9C1; 
+    border: solid;
+    border-color: #8ED9C1;
+}
+
+/* set view divs */
+
+#studyroom {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.setViewDiv {
+    cursor: pointer;
+    text-decoration: none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    float: left;
+
+    width: 300px;
+    height: 150px;
+    margin: 10px 20px;
+    padding: 10px 20px;
+
+    border-radius: 10px;
+    background-color: #8ED9C1;
+    color:#292929;
+}
+
+.setViewHeader {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.setViewName {
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    background-color:#292929;
+    border-radius: 60px;
+    width: 100%;
+    color: #8ED9C1;
+    align-content: center;
+    padding: 0px 10px;
+
+    overflow: hidden;          /* Hide any overflowed text */
+    white-space: normal;      /* Allow text to wrap */
+    text-overflow: clip;  
+}
+
+.setViewStar {
+    border-radius: 50px;
+    padding: 5px 5px;
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+}   
+
+.setViewStar:hover {
+    background-color: #c5efe2;
+}
+
+.setViewCardCount {
+    font-weight: bold;
+    text-align: left;
+}
+
+.setViewCreator {
+    font-size: smaller;
+    text-align: left;
+    color: #292929;
+}
+
+
+/* set view page */
+#starButton {
+    margin: 0px 20px;
+    height: 20px;
+}

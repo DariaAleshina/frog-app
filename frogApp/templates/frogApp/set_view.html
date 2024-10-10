@@ -1,0 +1,45 @@
+{% extends "frogApp/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script type="module" src="{% static 'frogApp/set_view.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+    FroSet
+{% endblock %}
+
+{% block main %}
+    {% if user.is_authenticated %}
+        {% csrf_token %}
+        <div hidden id="user_id_authenticated">{{ user.id }}</div>
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"></input>
+    {% endif %}
+
+    <div id="setInfo" class="main-sub-block">
+        <h2>FroSet "{{ set_info.name }}" by {{set_info.userCreated.username}}</h2>
+        <div hidden id="user_created_id">{{set_info.userCreated.id}}</div>
+        <div hidden id="set_name">{{set_info.name}}</div>
+    </div>  
+
+    {% if user.is_authenticated %}
+
+        <div id="filterButtons" class="main-sub-block">
+            <button id="buttonLearn" class="button_filter_active">learn</button>
+
+            {% if user.id == set_info.userCreated.id %}
+                <button id="buttonAddCards" class="button_filter_inactive">add new cards</button>
+            {% else %}
+                <a id="starButton" href="" data-starredstatus="{{ set_starred }}" data-setid="{{set_info.id}}"></a>
+            {% endif %}
+        
+        </div>
+
+        <div id="carouselView" class="main-sub-block"></div>
+
+    {% endif %}
+
+
+    <div id="cardsView" class="main-sub-block"></div>
+
+{% endblock %}  

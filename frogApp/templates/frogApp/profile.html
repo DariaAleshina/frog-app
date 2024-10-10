@@ -1,0 +1,28 @@
+{% extends "frogApp/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script type="module" src="{% static 'frogApp/profile.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+    {profile_username}
+{% endblock %}
+
+{% block main %}
+
+<div hidden id="user_profile_id">{{ profile_userId }}</div>
+
+
+{% if user.is_authenticated %}
+{% csrf_token %}
+<div hidden id="user_id_authenticated">{{ user.id }}</div>
+<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"></input>
+{% endif %}
+
+<div id="set_block" class="main-sub-block">
+    <h2>FroSets by {{ profile_username }}</h2>
+</div>
+
+
+{% endblock %}  

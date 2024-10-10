@@ -1,0 +1,39 @@
+{% extends "frogApp/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script type="module" src="{% static 'frogApp/index.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+
+    {% if not user.is_authenticated %}
+    <div class="intro-main">
+        <img id="intro_pic" src="/static/frogApp/intro.png" alt="FrogApp">
+    </div>
+
+    <div class="separation_block"> </div>
+    <h2><a href="{% url 'login' %}">Login</a> or <a href="{% url 'register' %}">Register</a></h2>
+    {% endif %}
+
+
+    {% if user.is_authenticated %}
+        {% csrf_token %}
+        <div hidden id="user_id_authenticated">{{ user.id }}</div>
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"></input>
+
+    <div id="user_block" class="main-sub-block">
+        <h2>Your FroSets</h2>
+    </div>
+    {% endif %}
+    <hr>
+    <div id="popular_block" class="main-sub-block">
+        <h2>Popular FroSets</h2>
+    </div>
+   
+
+{% endblock %}  

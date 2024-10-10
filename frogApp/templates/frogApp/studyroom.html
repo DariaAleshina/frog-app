@@ -1,0 +1,28 @@
+{% extends "frogApp/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script type="module" src="{% static 'frogApp/studyroom.js' %}"></script>
+{% endblock %}
+
+{% block title %}
+    Study Room
+{% endblock %}
+
+{% block main %}
+    {% if user.is_authenticated %}
+        {% csrf_token %}
+        <div hidden id="user_id_authenticated">{{ user.id }}</div>
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"></input>
+
+        <div id="filterButtons" class="main-sub-block">
+            <button id="buttonFilterAll" class="button_filter_active">all in study list</button>
+            <button id="buttonFilterOwn" class="button_filter_inactive">my sets</button>
+            <button id="buttonFilterOther" class="button_filter_inactive">starred sets</button>
+        </div>
+
+        <div id="studyroom" class="main-sub-block"></div>
+    
+    {% endif %}
+
+{% endblock %}  
