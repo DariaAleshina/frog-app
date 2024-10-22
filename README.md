@@ -4,10 +4,10 @@ FroApp is a web application designed to help learners of foreign languages expan
 # Key Features
 Unauthorised users can view other user´s FroSets on home page and view list of cards with words in the sets. 
 Authorised users get full access to: 
-    + creating their own sets; 
-    + add, edit and delete their own cards; 
-    + ability to add other user's sets to their study room; 
-    + learn words with flipping flash cards.
++ creating their own sets; 
++ add, edit and delete their own cards; 
++ ability to add other user's sets to their study room; 
++ learn words with flipping flash cards.
 
 # Distinctiveness and Complexity
 FroApp is designed with a specific educational goal — language learning — where the primary value is knowledge acquisition rather than communication, social engagement, or transactions. This makes FroApp different from the other projects in the course in terms of both purpose and end-user interaction.
