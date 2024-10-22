@@ -3,53 +3,55 @@ FroApp is a web application designed to help learners of foreign languages expan
 
 # Key Features
 Unauthorised users can view other user´s FroSets on home page and view list of cards with words in the sets. 
-Authorised users get additional access to: 
+Authorised users get full access to: 
     + creating their own sets; 
     + add, edit and delete their own cards; 
     + ability to add other user's sets to their study room; 
     + learn words with flipping flash cards.
 
 # Distinctiveness and Complexity
+FroApp is designed with a specific educational goal — language learning — where the primary value is knowledge acquisition rather than communication, social engagement, or transactions. This makes FroApp different from the other projects in the course in terms of both purpose and end-user interaction.
 
-FroApp is focused on language learning through interactive flashcards (FroCards) that users can create and study. Unlike social networks, e-commerce sites, or an online-store, FroApp is not centered around facilitating social interactions or selling products. Besides a more complex data structure where cards/words are grouped in sets, I have added a distinctive feature - flipping flash cards (on action).
+**Learning-Oriented Design**: FroApp centers on helping users learn and retain new vocabulary using interactive, personalized flashcards (FroCards). Users are actively engaging with content - sets of words/cards grouped by chosen topic - to memorise new foreign words. Users can add (and remove later) other user's shared content to their Study Room so that there is no need to create their own sets of cards from scratch, which enchances the learing process. 
 
-The project contains:
-    + 4 Models, 7 API routes 
-    + Delete-funtion added (for cards)
-    + Animation on card-deletion (a card smoothly dissapears when delete button is clicked)
-    + Animated flash cards: (carousel, flipping on click)
-    + Interactive study-room page: ability to filter sets by own/others
-    + Interactive set-view: switching between (and turning off) blocks with 'Flash Cards' and 'Adding new cards'
+**Unique Interactive Tools**: My project introduces unique mechanic not present in the other projects like carousel of flipping flashcards (with custom JavaScript and CSS animations) to reinforce learning new words.
 
-I have also done mostly my own design/CSS (Bootstrap is used minimally).
+**Complexity** of this project (vs other projects in the course) is achieved by:
++ Dynamic & complex structure of user-generated content: user creates custom sets that may contain endless amount of words/cards inside it. Each user FroSet has a feature of learning with flipping flashcards (and this feature can be activated and deactivated).
++ Sharable User Content: FroApp allows users not only create their own content, but also get access and interact with those of other users.
++ Unique gamification tools: flipping flashcards with animations, which transforms static content into an interactive experience
++ Customizable Study Rooms: Users can add sets to their study room, filter between their own sets and starred sets, making it a more dynamic space. 
++ Custom App design: I created mostly my own design/CSS. Bootstrap is used minimally.
++ Added CSS animaitons: e.g. on card-deletion to improve UX.
++ Project contains at least 9 HTML pages (vs 6 in my 'Network' project, and same as in my 'Auctions' project), 7 API routes (vs 6 in my 'Network' project), 4 Models (same as in my my 'Network' project)
+
 
 # File Structure and Content
-Django project 'final_project' contains only one App - **'froApp'**. 
+Django project 'final_project' contains only one App - **'froApp'**:
 
 * **models.py**: Defines the database schema relationships between these models:
-    + User
+    + User (basic user data: username, email, etc)
     + Set (set title & user created)
-    + Card (word, its translation and other info, incl set it belongs to)
-    + StarSet (which set is added to which user's study room)
+    + Card (foreign word or a phrase, translation, example of usage and oany other additional info + set it belongs to)
+    + StarSet (which set is added by which user - data is used to add sets to a user's personal study room)
 
-* **templates/frogApp**: Contains the HTML files for rendering web pages:
-    + **layout.html**: sets design for header and footer reused on all pages
+* **templates/frogApp**: Contains the HTML code to render layout and distinctive web pages:
+    + **layout.html**: sets unique design for header and footer reused on all pages
     + **regiter.html and login.html**: to authorise users
-    + **index.html**: home page of the website, dynamically renders either a login/register prompt for unauthenticated users or displays the user’s custom FroSets and popular FroSets for authenticated users, with JavaScript handling additional interactions through a separate module
-    + **createSet.html**: allows authenticated users to create a new FroSet by providing sections for adding new sets and individual cards, with JavaScript managing the dynamic creation and display of these elements
-    + **set_view.html**: displays a specific FroSet with details about the set and its creator, allowing authenticated users to interact with the set by learning cards, adding new cards (if they created it), or starring it, with dynamic content and interactions handled through JavaScript
-    + **studyroom.html**: renders the user's Study Room, allowing authenticated users to filter and view all their study sets, their own sets, or starred sets, with dynamic content updates managed by JavaScript.
-    + **profile.html**: displays a user's profile page, showing all FroSets created by this user
+    + **index.html**: home page of the website. Dynamically renders either a login/register prompt for unauthenticated users or displays the user’s own FroSets as well as other users' FroSets (sorted by study-popularity) for authenticated users. JS described a seperate module (index.js) handles the display of sets.
+    + **createSet.html**: allows authenticated users to create a new FroSet via two forms - (1) create set titel  and then (2) add a new card info. JS described a seperate module (createSet.js) handles the dynamic dispay of both forms as well as dispay of the created cards. 
+    + **set_view.html**: displays a specific FroSet info: the set title, its creator username, list of all the cards in this set. Authenticated users have access to interact with flipping flash cards, to add new cards (if they created the set), or add it to study room. JS described a seperate module (set_view.js) handles the dynamic dispay of card list, flipping cards and "add new card" form (if applicable). 
+    + **studyroom.html**: renders the user's Study Room, allowing authenticated users to filter and view the sets: their own sets or starred sets. JS described a seperate module (studyroom.js) handles the display of sets based on the filter.
+    + **profile.html**: displays a user's profile page, showing all FroSets created by this user. JS described a seperate module (profile.js) handles the display of sets.
     + **error.html**: renders with a customised message when user trying to access page that does not exist
 
-
 * **static/FrogApp**: Contains static assets like CSS file, JavaScript files, and images for styling and functionality.
-    + **styles.css**: styling the web app design. 
+    + **styles.css**: styling the web app design (covers all pages). 
     + **flippingcards.js**: module with functions (for further export) that dynamically load and display a Carousel of FroCards (flashcards) with flipping animations, enabling users to study cards by flipping between words and their translations (and add info). Includes navigation via scrollable arrows.
     + **common.js**: module with key functions (for further export, being reused for multiple pages) for displaying forms for creating new sets and cards, for loading and displaying existing sets and cards, editing and deleting cards, adding sets to a study list. 
     + **studyroom.js, profile.js, index.js, set_view.js, createSet.js**: dinamically render relevant html.files using external JS functions from common.js and flippingcards.js.
 
-* views.py & url.py: contain back-end logic, including 7 API routes to support JS functions for retrieving data from DB and changing it. 
+* **views.py & url.py**: contains 15 functions, including 7 API routes to support JS functions for retrieving data from DB and changing it. 
 
 # How to Run FroApp
 In your terminal, cd into the project directory.
