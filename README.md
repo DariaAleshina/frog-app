@@ -1,26 +1,27 @@
 # FroApp by DariaAleshina
-FroApp is a web application designed to help learners of foreign languages expand their vocabulary using interactive flashcards called "FroCards." Users can create custom sets ("so called FroSets) of flashcards with new words, as well as explore and add other users' FroSets to their own study room for further learning.
+FroApp is a web application designed to help learners of foreign languages expand their vocabulary using interactive flashcards called "FroCards". Users can create custom sets (so called "FroSets") of flashcards with new words, as well as explore and add other users' FroSets to their own study room for further learning.
 
 # Key Features
 Unauthorised users can view other user´s FroSets on home page and view list of cards with words in the sets. 
 Authorised users get additional access to: 
-    * creating their own sets; 
-    * add, edit and delete their own cards; 
-    * ability to add other user's sets to their study room; 
-    * learn words with flipping flash cards.
+    + creating their own sets; 
+    + add, edit and delete their own cards; 
+    + ability to add other user's sets to their study room; 
+    + learn words with flipping flash cards.
 
 # Distinctiveness and Complexity
-## Distinctiveness
-FroApp is focused on language learning through interactive flashcards (FroCards) that users can create and study. Unlike social networks, e-commerce sites, or an online-store, FroApp is not centered around facilitating social interactions or selling products. Besides a more complex data structure where cards/words are grouped in sets, I have added a distinctive feature - flipping flash cards.
 
-## Complexity
-4 Models, 7 API routes 
-Delete-funtion added (for cards)
-Animation on card-deletion (a card smoothly dissapears when delete button is clicked)
-Animated flash cards: (carousel, flipping on click)
-Interactive study-room page: ability to filter sets by own/others
-Interactive set-view: switching between (and turning off) blocks with 'Flash Cards' and 'Adding new cards'
+FroApp is focused on language learning through interactive flashcards (FroCards) that users can create and study. Unlike social networks, e-commerce sites, or an online-store, FroApp is not centered around facilitating social interactions or selling products. Besides a more complex data structure where cards/words are grouped in sets, I have added a distinctive feature - flipping flash cards (on action).
 
+The project contains:
+    + 4 Models, 7 API routes 
+    + Delete-funtion added (for cards)
+    + Animation on card-deletion (a card smoothly dissapears when delete button is clicked)
+    + Animated flash cards: (carousel, flipping on click)
+    + Interactive study-room page: ability to filter sets by own/others
+    + Interactive set-view: switching between (and turning off) blocks with 'Flash Cards' and 'Adding new cards'
+
+I have also done mostly my own design/CSS (Bootstrap is used minimally).
 
 # File Structure and Content
 Django project 'final_project' contains only one App - **'froApp'**. 
